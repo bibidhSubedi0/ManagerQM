@@ -1,0 +1,36 @@
+﻿@model ManagerQM.Models.UserTask
+
+<div class="container mt-4">
+    <div class="card shadow-sm rounded border-danger">
+        <div class="card-header bg-danger text-white">
+            <h4 class="mb-0">⚠️ Delete Task</h4>
+        </div>
+        <div class="card-body">
+            <p class="text-danger fw-bold">
+                Are you sure you want to permanently delete this task?
+            </p>
+
+            <ul class="list-group mb-3">
+                <li class="list-group-item">
+                    <b>Task Info:</b> @Model.TaskInfo
+                </li>
+                <li class="list-group-item">
+                    <b>Completed:</b>
+                    @if (Model.Status == 0)
+                    {
+                        <span class="badge bg-success">Yes</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-warning text-dark">No</span>
+                    }
+                </li>
+            </ul>
+
+            <form method="post" action="/tasks/delete/@Model.Id" class="d-flex">
+                <button type="submit" class="btn btn-danger me-2">🗑️ Delete</button>
+                <a href="/tasks/gettasks" class="btn btn-outline-secondary">⬅ Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>

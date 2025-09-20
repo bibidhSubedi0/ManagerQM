@@ -1,0 +1,55 @@
+﻿@model List<ManagerQM.Models.UserTask>
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="mb-0">📋 Task List</h2>
+        <a href="/tasks/create" class="btn btn-primary">
+            + Add New Task
+        </a>
+    </div>
+
+    <table class="table table-hover table-bordered shadow-sm rounded">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Task Info</th>
+                <th scope="col">Status</th>
+                <th scope="col" class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Any())
+            {
+                foreach (var task in Model)
+                {
+                    <tr class="align-middle">
+                        <td>@task.Id</td>
+                        <td>@task.TaskInfo</td>
+                        <td>
+                            @if (task.Status == ManagerQM.Models.TaskStatus.Completed)
+                            {
+                                <span class="badge bg-success">Completed</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-warning text-dark">Pending</span>
+                            }
+                        </td>
+                        <td class="text-center">
+                            <a href="/tasks/edit/@task.Id" class="btn btn-sm btn-outline-primary me-2">Edit</a>
+                            <a href="/tasks/delete/@task.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="4" class="text-center text-muted">
+                        No tasks available. Start by adding a new one!
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

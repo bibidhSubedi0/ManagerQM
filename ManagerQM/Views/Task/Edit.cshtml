@@ -1,0 +1,21 @@
+﻿@model ManagerQM.Models.UserTask
+
+<form asp-action="Edit" asp-route-id="@Model.Id" method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label asp-for="TaskInfo" class="form-label"></label>
+        <input asp-for="TaskInfo" class="form-control" />
+        <span asp-validation-for="TaskInfo" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Status" class="form-label">Task Status</label>
+        <select asp-for="Status" asp-items="Html.GetEnumSelectList<@ManagerQM.Models.TaskStatus>()" class="form-select"></select>
+        <span asp-validation-for="Status" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-warning text-dark">💾 Update</button>
+    <a asp-action="GetTasks" class="btn btn-outline-secondary ms-2">⬅ Back to List</a>
+</form>

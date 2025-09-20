@@ -1,0 +1,26 @@
+﻿@model ManagerQM.Models.UserTask
+
+<div class="container mt-4">
+    <div class="card shadow-sm rounded">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">➕ Create Task</h4>
+        </div>
+        <div class="card-body">
+            <form method="post" action="/tasks/create">
+                <div class="mb-3">
+                    <label for="TaskInfo" class="form-label">Task Info</label>
+                    <input type="text" class="form-control" id="TaskInfo" name="TaskInfo" placeholder="Enter task details" required />
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Status" class="form-label">Task Status</label>
+                    <select asp-for="Status" asp-items="Html.GetEnumSelectList<@ManagerQM.Models.TaskStatus>()" class="form-select"></select>
+                </div>
+
+
+                <button type="submit" class="btn btn-success">💾 Save Task</button>
+                <a href="/tasks/gettasks" class="btn btn-outline-secondary ms-2">⬅ Back to List</a>
+            </form>
+        </div>
+    </div>
+</div>
