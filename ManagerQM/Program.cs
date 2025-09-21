@@ -46,6 +46,9 @@ app.UseAuthorization();
 
 app.MapStaticAssets();
 
+
+// By default we are going to 
+// https://localhost:7259/home/index
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}")

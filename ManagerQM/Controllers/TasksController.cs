@@ -68,7 +68,9 @@ namespace ManagerQM.Controllers
                 var task = _context.Tasks.Find(id);
                 if (task == null) return NotFound();
 
-                task = updatedTask;
+                task.Id = updatedTask.Id;
+                task.TaskInfo = updatedTask.TaskInfo;
+                task.Status = updatedTask.Status;
                 _context.SaveChanges();
 
                 return RedirectToAction("GetTasks");
