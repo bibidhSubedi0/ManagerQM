@@ -1,0 +1,11 @@
+﻿<h2>Welcome, @ViewBag.Name!</h2>
+<p>Your email: @ViewBag.Email</p>
+<p>Your Name: @ViewBag.Name</p>
+<a asp-controller="Account" asp-action="Logout">Logout</a>
+
+<script type="text/javascript">
+    // Redirect after 2 seconds
+    setTimeout(function () {
+        window.location.href = '@Url.Action("GetTasks", "Task")';
+    }, 1000);
+</script>

@@ -15,7 +15,8 @@ namespace ManagerQM.Controllers
 
         public IActionResult Index()
         {
-            return RedirectToAction("gettasks", "Task");
+            //return RedirectToAction("gettasks", "Task");
+            return View();
         }
 
         public IActionResult Privacy()

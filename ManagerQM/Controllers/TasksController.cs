@@ -1,5 +1,6 @@
 ﻿using ManagerQM.Data;
 using ManagerQM.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
@@ -14,6 +15,7 @@ namespace ManagerQM.Controllers
             _context = context;
         }
 
+        //[Authorize]
         // ---------------- READ ----------------
         [Route("tasks/gettasks")]
         public IActionResult GetTasks()
