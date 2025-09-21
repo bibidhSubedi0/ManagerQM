@@ -20,7 +20,11 @@ namespace ManagerQM.Controllers
         [Route("tasks/gettasks")]
         public IActionResult GetTasks()
         {
-            var tasks = _context.Tasks.ToList();
+            var email = User.Claims.FirstOrDefault(c => c.Type == System.Security.Claims.ClaimTypes.Email)?.Value;
+            Console.WriteLine(email);
+            var tasks = _context.Tasks
+                                .Where(t => t.UserEmail == email)
+                                .ToList();
             return View(tasks);  // Pass tasks to a View
         }
 
@@ -36,8 +40,31 @@ namespace ManagerQM.Controllers
         [Route("tasks/create")]
         public IActionResult Create(UserTask task)
         {
+            var email = User.Claims.FirstOrDefault(c => c.Type == System.Security.Claims.ClaimTypes.Email)?.Value;
+            Console.WriteLine(email);
+            if (email == null)
+            {
+                return Unauthorized(); // user not logged in properly
+            }
+
+            task.UserEmail = email;
+
+            if (!ModelState.IsValid)
+            {
+                Console.WriteLine("ModelState invalid!");
+                foreach (var kvp in ModelState)
+                {
+                    foreach (var error in kvp.Value.Errors)
+                    {
+                        Console.WriteLine($"{kvp.Key}: {error.ErrorMessage}");
+                    }
+                }
+                return View(task);
+            }
+
             if (ModelState.IsValid)
             {
+                Console.WriteLine("ModelState invalid!");
                 _context.Tasks.Add(task);
                 _context.SaveChanges();
                 return RedirectToAction("GetTasks");

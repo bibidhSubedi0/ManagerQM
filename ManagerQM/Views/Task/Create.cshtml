@@ -6,23 +6,27 @@
             <h4 class="mb-0">➕ Create Task</h4>
         </div>
         <div class="card-body">
-            <form method="post" action="/tasks/create">
+            <form method="post" asp-action="Create">
                 <div class="mb-3">
-                    <label for="TaskInfo" class="form-label">Task Info</label>
-                    <input type="text" class="form-control" id="TaskInfo" name="TaskInfo" placeholder="Enter task details" required />
+                    <label asp-for="TaskInfo" class="form-label"></label>
+                    <input asp-for="TaskInfo" class="form-control" />
+                    <span asp-validation-for="TaskInfo" class="text-danger"></span>
                 </div>
 
                 <div class="mb-3">
-                    <label asp-for="Status" class="form-label">Task Status</label>
-                    <select asp-for="Status" asp-items="Html.GetEnumSelectList<@ManagerQM.Models.TaskStatus>()" class="form-select"></select>
+                    <label asp-for="Status" class="form-label"></label>
+                    <select asp-for="Status" asp-items="Html.GetEnumSelectList<ManagerQM.Models.TaskStatus>()" class="form-select"></select>
+                    <span asp-validation-for="Status" class="text-danger"></span>
                 </div>
+
                 <div class="mb-3">
-                    <label asp-for="Deadline" class="form-label">Deadline</label>
+                    <label asp-for="Deadline" class="form-label"></label>
                     <input asp-for="Deadline" type="date" class="form-control" />
+                    <span asp-validation-for="Deadline" class="text-danger"></span>
                 </div>
 
                 <button type="submit" class="btn btn-success">💾 Save Task</button>
-                <a href="/tasks/gettasks" class="btn btn-outline-secondary ms-2">⬅ Back to List</a>
+                <a asp-action="GetTasks" class="btn btn-outline-secondary ms-2">⬅ Back to List</a>
             </form>
         </div>
     </div>

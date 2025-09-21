@@ -1,4 +1,6 @@
-﻿namespace ManagerQM.Models
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+
+namespace ManagerQM.Models
 {
     public enum TaskStatus
     {
@@ -15,6 +17,8 @@
         public TaskStatus Status { get; set; } = TaskStatus.Pending;
 
         public DateTime? Deadline { get; set; }
+
+        public string? UserEmail { get; set; }
 
         public UserTask() { }
 
