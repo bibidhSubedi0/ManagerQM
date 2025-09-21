@@ -16,7 +16,10 @@
                     <label asp-for="Status" class="form-label">Task Status</label>
                     <select asp-for="Status" asp-items="Html.GetEnumSelectList<@ManagerQM.Models.TaskStatus>()" class="form-select"></select>
                 </div>
-
+                <div class="mb-3">
+                    <label asp-for="Deadline" class="form-label">Deadline</label>
+                    <input asp-for="Deadline" type="date" class="form-control" />
+                </div>
 
                 <button type="submit" class="btn btn-success">💾 Save Task</button>
                 <a href="/tasks/gettasks" class="btn btn-outline-secondary ms-2">⬅ Back to List</a>

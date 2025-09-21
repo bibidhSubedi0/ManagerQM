@@ -14,13 +14,16 @@
 
         public TaskStatus Status { get; set; } = TaskStatus.Pending;
 
+        public DateTime? Deadline { get; set; }
+
         public UserTask() { }
 
-        public UserTask(int id, string taskInfo, TaskStatus status)
+        public UserTask(int id, string taskInfo, TaskStatus status, DateTime? deadline)
         {
             Id = id;
             TaskInfo = taskInfo;
             Status = status;
+            Deadline = deadline;
         }
     }
 }

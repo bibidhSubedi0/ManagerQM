@@ -14,6 +14,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Task Info</th>
                 <th scope="col">Status</th>
+                <th scope="col">Deadline</th>
                 <th scope="col" class="text-center">Actions</th>
             </tr>
         </thead>
@@ -38,6 +39,9 @@
                             {
                                 <span class="badge bg-danger text-dark">Pending</span>
                             }
+                        </td>
+                        <td>
+                            @task.Deadline
                         </td>
                         <td class="text-center">
                             <a href="/tasks/edit/@task.Id" class="btn btn-sm btn-outline-primary me-2">Edit</a>
